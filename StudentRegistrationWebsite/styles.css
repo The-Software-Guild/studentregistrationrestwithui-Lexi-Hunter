@@ -1,0 +1,42 @@
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+
+.custom-navbar {
+    background-color: #c7c3c3;
+}
+
+.navbar-brand {
+    color: black !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.new-field[contenteditable="true"] {
+    background-color: #e0e0e0 !important;
+}
+
+.editable[contenteditable="true"] {
+    background-color: #e0e0e0 !important; 
+}
+
+.table-container {
+    text-align: center;
+}
+
+.table-container .add-btn {
+    display: inline-block;
+    margin-top: 0px;
+}

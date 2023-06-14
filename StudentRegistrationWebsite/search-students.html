@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="ajax.js"></script>
+
+    <title>Student Registration</title>
+</head>
+<body class="bg-light" style="padding-top: 50px;">
+    <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
+        <a class="navbar-brand" href="#">Student Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="modify-students.html">Modify Records</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="search-students.html">Search Records</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <h2 class="mb-4">Advanced Search</h2>
+        <form id="searchForm">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    
+                    <div id="idSearch">
+                        <label for="id">ID:</label>
+                        <input type="number" id="id" name="id" class="form-control">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="includeID" name="includeID" unchecked>
+                            <label class="form-check-label" for="includeID">Include ID in search</label>
+                        </div>
+                        <div id="idRadioGroup" class="mt-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="greaterThan" name="idComparison" value="greaterThan">
+                                <label class="form-check-label" for="greaterThan">Greater than</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="equalTo" name="idComparison" value="equalTo">
+                                <label class="form-check-label" for="equalTo">Equal to</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="lessThan" name="idComparison" value="lessThan">
+                                <label class="form-check-label" for="lessThan">Less than</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="name">Name:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" id="nameEqual" name="nameEqual">
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" id="nameEqualVal" name="nameEqualVal" placeholder="Equals to">
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    
+                    <div id="ageSearch">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" class="form-control">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="includeAge" name="includeAge" unchecked>
+                            <label class="form-check-label" for="includeAge">Include Age in search</label>
+                        </div>
+                        <div id="ageRadioGroup" class="mt-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="ageGreaterThan" name="ageComparison" value="greaterThan">
+                                <label class="form-check-label" for="ageGreaterThan">Greater than</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="ageEqualTo" name="ageComparison" value="equalTo">
+                                <label class="form-check-label" for="ageEqualTo">Equal to</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="ageLessThan" name="ageComparison" value="lessThan">
+                                <label class="form-check-label" for="ageLessThan">Less than</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group col-md-2">
+                    <label for="mobile">Mobile:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" id="mobileEqual" name="mobileEqual">
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" id="mobileEqualVal" name="mobileEqualVal" placeholder="Equals to">
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="address">Address:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" id="addressEqual" name="addressEqual">
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" id="addressEqualVal" name="addressEqualVal" placeholder="Equals to">
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Search" class="btn btn-primary">
+        </form>
+    </div>
+
+    <div class="container">
+        <table class="table table-striped" id="studentTable">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+            
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
